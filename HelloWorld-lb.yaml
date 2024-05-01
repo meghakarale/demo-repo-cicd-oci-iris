@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: irismodel-ml-deployment-<yourName>
+  namespace: ns-<yourName>
+spec:
+  selector:
+    matchLabels:
+      app: irismodelml
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: irismodelml
+    spec:
+      containers:
+      - name: irismodelml
+    # enter the path to your image, be sure to include the correct region prefix    
+        image: us-ashburn-1.ocir.io/bmltb10irumx/us-ashburn-1-dop-1-ocir-1/oci_sample_webapp_<yourName>:${BUILDRUN_HASH}
+        ports:
+        - containerPort: 8501
+      imagePullSecrets:
+    # enter the name of the secret you created  
+      - name: ocir-secret-<yourName>
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: irismodel-ml-service-<yourName>
+  namespace: ns-<yourName>
+  annotations:
+    oci.oraclecloud.com/load-balancer-type: "lb"
+    service.beta.kubernetes.io/oci-load-balancer-shape: "flexible"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-min: "10"
+    service.beta.kubernetes.io/oci-load-balancer-shape-flex-max: "100"
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8501
+  selector:
+    app: irismodelml
