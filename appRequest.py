@@ -6,7 +6,7 @@ import numpy as np
 import joblib
 import streamlit
 
-model = joblib.load(r'IrisModel.pkl')
+model = joblib.load(r'IrisModel.model')
 
 
 # user define function
