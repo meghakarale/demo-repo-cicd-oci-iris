@@ -1,6 +1,6 @@
 #Mention base image
 
-FROM continuumio/anaconda3:2022.05
+FROM us-ashburn-1.ocir.io/idrues0zhwlo/us-ashburn-1-dop-1-ocir-1/python:3.8-bookworm
 
 #Copy the current folder structure and content to docker container file system folder
 
