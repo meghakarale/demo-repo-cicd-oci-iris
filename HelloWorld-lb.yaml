@@ -16,7 +16,7 @@ spec:
       containers:
       - name: irismodelml
     # enter the path to your image, be sure to include the correct region prefix    
-        image: us-ashburn-1.ocir.io/idrues0zhwlo/us-ashburn-1-dop-1-ocir-1/oci_sample_webapp_<yourName>:${BUILDRUN_HASH}
+        image: ap-mumbai-1.ocir.io/bmltb10irumx/ap-mumbai-1-dop-1-ocir-1/oci_sample_webapp_<yourName>:${BUILDRUN_HASH}
         ports:
         - containerPort: 8501
       imagePullSecrets:
