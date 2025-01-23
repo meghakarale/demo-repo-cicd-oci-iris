@@ -1,6 +1,6 @@
 #Mention base image
 
-FROM us-ashburn-1.ocir.io/idrues0zhwlo/us-ashburn-1-dop-1-ocir-1/python:3.8-bookworm
+FROM ap-mumbai-1.ocir.io/bmltb10irumx/ap-mumbai-1-dop-1-ocir-1/python:3.8-bookworm
 
 #Copy the current folder structure and content to docker container file system folder
 
